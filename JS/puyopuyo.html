@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Puyo Puyo Game</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      #gameBoard {
+        width: 300px;
+        height: 600px;
+        border: 1px solid black;
+        position: relative;
+      }
+      .puyo {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: absolute;
+      }
+      .red {
+        background-color: red;
+      }
+      .green {
+        background-color: green;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gameBoard"></div>
+    <script>
+      const board = document.getElementById("gameBoard");
+      const boardWidth = 10;
+      const boardHeight = 20;
+      const puyoSize = 30; // width and height of a puyo in pixels
+
+      // Function to add a new puyo to the board
+      function addPuyo(color, x, y) {
+        const puyo = document.createElement("div");
+        puyo.classList.add("puyo", color);
+        puyo.style.left = x * puyoSize + "px";
+        puyo.style.top = y * puyoSize + "px";
+        board.appendChild(puyo);
+      }
+
+      // Example usage
+      addPuyo("red", 3, 0);
+      addPuyo("green", 4, 0);
+      addPuyo("blue", 3, 1);
+      addPuyo("yellow", 4, 1);
+
+      // TODO: Add more game logic here (e.g., moving and rotating puyos, line completion, game over condition)
+    </script>
+  </body>
+</html>
