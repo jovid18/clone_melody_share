@@ -24,15 +24,15 @@ class Song(db.Model):
     image_url = db.Column(db.String(10000), nullable=False)
 
     def __repr__(self):
-        return f'{self.username} {self.title} 추천 by {self.username}'
+        return f'{self.username} {self.title} 推薦 by {self.username}'
 
 with app.app_context():
     db.create_all()
 
 @app.route("/")
 def home():
-    name = '최지웅'
-    motto = "행복해서 웃는게 아니라 웃어서 행복합니다."
+    name = '조성현'
+    motto = "新しいことを学んでいきましょう！"
 
     context = {
         "name": name,
@@ -50,16 +50,6 @@ def music():
 def render_music_filter(username):
     filter_list=Song.query.filter_by(username=username).all()
     return render_template('music.html',data=filter_list)
-
-@app.route("/iloveyou/<name>/")
-def iloveyou(name):
-    motto = f"{name}야 난 너뿐이야!"
-
-    context = {
-        'name': name,
-        'motto': motto,
-    }
-    return render_template('motto.html', data=context)
 
 @app.route("/music/create/")
 def music_create(): 
